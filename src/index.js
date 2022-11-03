@@ -1,9 +1,7 @@
 import game from "./data.js";
 
-const { players } = game;
-
 // 1. Create one player array for each team
-const [players1, players2] = players;
+const [players1, players2] = game.players;
 
 // 2. For team 1, create a variable with the goal keeper and and array with the rest
 const [gk, ...fieldPlayers] = players1;
@@ -15,8 +13,9 @@ const allPlayers = [...players1, ...players2];
 const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
 
 // 5. Create one variable for each odd
-const { odds } = game;
-const { team1, x: draw, team2 } = odds;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 
 // 6. Write a function
 const printGoals = (...names) => {
@@ -25,14 +24,12 @@ const printGoals = (...names) => {
     totalGoals++;
     console.log(name);
   }
-  console.log(totalGoals);
+  console.log(`${totalGoals} goals were scored.`);
 };
 
 printGoals("Davies", "Muller", "Lewandowski", "Kimmich");
 
-const { scored } = game;
-
-printGoals(...scored);
+printGoals(...game.scored);
 
 // 7. Print the team that is more likely to win
-console.log((team1 > team2 && "team2") || "team1");
+console.log(`${(team1 > team2 && "team2") || "team1"} is more likely to win`);
