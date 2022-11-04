@@ -57,11 +57,9 @@ for (const [team, odd] of Object.entries(game.odds)) {
 
 // 4. Create an object called scorers
 const scorers = {};
-const values = Object.values(game.scored);
 
-for (const value of values) {
-  if (!scorers[value]) scorers[value] = 1;
-  else scorers[value] += 1;
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }
 
 console.log(scorers);
