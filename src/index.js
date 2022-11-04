@@ -1,5 +1,6 @@
 import game from "./data.js";
 
+// Coding Challenge #1
 // 1. Create one player array for each team
 const [players1, players2] = game.players;
 
@@ -33,3 +34,34 @@ printGoals(...game.scored);
 
 // 7. Print the team that is more likely to win
 console.log(`${(team1 > team2 && "team2") || "team1"} is more likely to win`);
+
+// Coding Challenge #2
+// 1. Loop over game.scored
+for (const [i, player] of game.scored.entries()) console.log(`Goal ${i + 1}: ${player}`);
+
+// 2. Use a loop to calculate avarage odd
+const odds = Object.values(game.odds);
+
+const calcAvg = values => {
+  let avg = 0;
+  for (const value of values) avg += value;
+  return avg / values.length;
+};
+
+console.log(calcAvg(odds));
+
+// 3. Print the 3 odds
+for (const [team, odd] of Object.entries(game.odds)) {
+  console.log(`Odd of ${team === "x" ? "draw" : `victory of ${game[team]} `}: ${odd}`);
+}
+
+// 4. Create an object called scorers
+const scorers = {};
+const values = Object.values(game.scored);
+
+for (const value of values) {
+  if (!scorers[value]) scorers[value] = 1;
+  else scorers[value] += 1;
+}
+
+console.log(scorers);
