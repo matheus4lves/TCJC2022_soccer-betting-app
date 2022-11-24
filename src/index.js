@@ -1,6 +1,7 @@
-import game from "./data.js";
+"use strict";
+import { game, gameEvents } from "./data.js";
 
-// Coding Challenge #1
+/* Coding Challenge #1 */
 // 1. Create one player array for each team
 const [players1, players2] = game.players;
 
@@ -35,7 +36,7 @@ printGoals(...game.scored);
 // 7. Print the team that is more likely to win
 console.log(`${(team1 > team2 && "team2") || "team1"} is more likely to win`);
 
-// Coding Challenge #2
+/* Coding Challenge #2 */
 // 1. Loop over game.scored
 for (const [i, player] of game.scored.entries()) console.log(`Goal ${i + 1}: ${player}`);
 
@@ -63,3 +64,23 @@ for (const player of game.scored) {
 }
 
 console.log(scorers);
+
+/* Coding Challenge #3 */
+// Task #1: Create an array "events"
+
+// Q. What is the problem you're trying to solve?
+// A. I have to create an array of events based on a Map with no duplicated items
+// Q. Can I create a set based on a map?
+// Q. What are the steps?
+// A.
+// Possible solution 1:
+// 1. Create a Set based on the values of items of the Map
+// 2. Convert the Set into an array
+
+// Maybe you should take into account that a Map object iterates entries, keys, and values.
+
+const eventsSet = new Set();
+gameEvents.forEach(value => eventsSet.add(value));
+console.log(eventsSet);
+const events = [...eventsSet];
+console.log(Array.isArray(events));
