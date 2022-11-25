@@ -96,3 +96,8 @@ const calcAvg3 = arr => {
 };
 
 console.log(`An event happened, on average, every ${calcAvg3(gameEventsKeys)} minutes.`);
+
+// 4. Loop over gameEvents
+gameEvents.forEach((value, key) => {
+  console.log(`${key < 45 ? "[FIRST HALF]" : "[SECOND HALF]"} ${key}: ${value}`);
+});
