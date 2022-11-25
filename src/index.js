@@ -68,13 +68,12 @@ console.log(scorers);
 /* Coding Challenge #3 */
 // 1. Create an array from the different events
 // Create a Set() instance
-const eventsSet = new Set();
-// Loop through the Map() and use its values to fulfill the Set()
+/* const eventsSet = new Set();
 gameEvents.forEach(value => eventsSet.add(value));
-// Use the destructure assignment to transform the Set() into an array
 const events = [...eventsSet];
-// Check if it really is an array
-console.log(Array.isArray(events));
+console.log(Array.isArray(events)); */
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 
 // 2. Remove an event
 gameEvents.delete(64);
@@ -82,7 +81,7 @@ gameEvents.delete(64);
 console.log(gameEvents);
 
 // 3. Compute and log the string
-const gameEventsKeys = [...gameEvents.keys()];
+/* const gameEventsKeys = [...gameEvents.keys()];
 
 const calcAvg3 = arr => {
   const length = arr.length;
@@ -95,7 +94,10 @@ const calcAvg3 = arr => {
   return sum / count;
 };
 
-console.log(`An event happened, on average, every ${calcAvg3(gameEventsKeys)} minutes.`);
+console.log(`An event happened, on average, every ${calcAvg3(gameEventsKeys)} minutes.`); */
+const numberOfEvents = gameEvents.size;
+const gameDuration = [...gameEvents.keys()].pop();
+console.log(`An event happened, on average, every ${gameDuration / numberOfEvents} minutes.`);
 
 // 4. Loop over gameEvents
 gameEvents.forEach((value, key) => {
