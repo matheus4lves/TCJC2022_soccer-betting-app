@@ -66,21 +66,33 @@ for (const player of game.scored) {
 console.log(scorers);
 
 /* Coding Challenge #3 */
-// Task #1: Create an array "events"
-
-// Q. What is the problem you're trying to solve?
-// A. I have to create an array of events based on a Map with no duplicated items
-// Q. Can I create a set based on a map?
-// Q. What are the steps?
-// A.
-// Possible solution 1:
-// 1. Create a Set based on the values of items of the Map
-// 2. Convert the Set into an array
-
-// Maybe you should take into account that a Map object iterates entries, keys, and values.
-
+// 1. Create an array from the different events
+// Create a Set() instance
 const eventsSet = new Set();
+// Loop through the Map() and use its values to fulfill the Set()
 gameEvents.forEach(value => eventsSet.add(value));
-console.log(eventsSet);
+// Use the destructure assignment to transform the Set() into an array
 const events = [...eventsSet];
+// Check if it really is an array
 console.log(Array.isArray(events));
+
+// 2. Remove an event
+gameEvents.delete(64);
+
+console.log(gameEvents);
+
+// 3. Compute and log the string
+const gameEventsKeys = [...gameEvents.keys()];
+
+const calcAvg3 = arr => {
+  const length = arr.length;
+  let sum = arr[0];
+  let count = 1;
+  for (let i = length - 1; i > 0; i--) {
+    sum += arr[i] - arr[i - 1];
+    count++;
+  }
+  return sum / count;
+};
+
+console.log(`An event happened, on average, every ${calcAvg3(gameEventsKeys)} minutes.`);
